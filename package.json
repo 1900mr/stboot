@@ -1,7 +1,7 @@
 {
   "name": "js-demo",
   "version": "1.0.0",
-  "main": "boot.js",
+  "main": "index.js",
   "dependencies": {
     "adler-32": "^1.3.1",
     "ajv": "^6.12.6",
