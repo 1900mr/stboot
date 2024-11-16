@@ -8,7 +8,7 @@ const express = require('express');  // إضافة Express لتشغيل السي
 const app = express();
 
 // تحديد المنفذ باستخدام متغير البيئة PORT
-const port = process.env.PORT || 4000;  // إذا لم يكن هناك PORT في البيئة، سيعمل على 3000 محليًا
+const port = process.env.PORT : 4000;  // إذا لم يكن هناك PORT في البيئة، سيعمل على 3000 محليًا
 
 // استبدل 'YOUR_BOT_TOKEN_HERE' بالتوكن الخاص بالبوت
 const token = '7203035834:AAFsWjHtF2q3p-dGH_6mm9IykYqX4Erfrnc'; || 'YOUR_BOT_TOKEN_HERE';
