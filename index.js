@@ -57,7 +57,9 @@ bot.on('message', (msg) => {
 const app = express();
 
 // تحديد المنفذ باستخدام متغير البيئة PORT
-const port = process.env.PORT || 3000;  // إذا لم يكن هناك PORT في البيئة، سيعمل على 3000 محليًا
+const express = require('express')
+const app = express()
+const port = process.env.PORT || 4000;  // إذا لم يكن هناك PORT في البيئة، سيعمل على 3000 محليًا
 
 // بدء السيرفر
 app.listen(port, () => {
