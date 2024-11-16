@@ -3,14 +3,15 @@ const TelegramBot = require('node-telegram-bot-api');
 const XLSX = require('xlsx');
 require('dotenv').config(); // إذا كنت تستخدم متغيرات بيئية
 const express = require('express');  // إضافة Express لتشغيل السيرفر
+
 // إعداد سيرفر Express (لتشغيل التطبيق على Render أو في بيئة محلية)
 const app = express();
+
 // تحديد المنفذ باستخدام متغير البيئة PORT
 const port = process.env.PORT || 4000;  // إذا لم يكن هناك PORT في البيئة، سيعمل على 3000 محليًا
 
-
 // استبدل 'YOUR_BOT_TOKEN_HERE' بالتوكن الخاص بالبوت
-const token = '7203035834:AAFsWjHtF2q3p-dGH_6mm9IykYqX4Erfrnc';
+const token = '7203035834:AAFsWjHtF2q3p-dGH_6mm9IykYqX4Erfrnc'; || 'YOUR_BOT_TOKEN_HERE';
 
 // إنشاء البوت مع التفعيل
 const bot = new TelegramBot(token, { polling: true });
@@ -57,9 +58,6 @@ bot.on('message', (msg) => {
         bot.sendMessage(chatId, "عذرًا، لم أتمكن من العثور على اسمك.");
     }
 });
-
-
-
 
 // بدء السيرفر
 app.listen(port, () => {
