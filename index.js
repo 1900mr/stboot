@@ -11,7 +11,7 @@ const app = express();
 const port = process.env.PORT || 4000;  // إذا لم يكن هناك PORT في البيئة، سيعمل على 4000
 
 // استبدل 'YOUR_BOT_TOKEN_HERE' بالتوكن الخاص بالبوت
-const token = process.env.TELEGRAM_BOT_TOKEN || '7203035834:AAGFpChh3plAa6A3bDgfDy3nzA0NiivMPk4';
+const token = process.env.TELEGRAM_BOT_TOKEN || '7778626923:AAHhe0U3UTEtW2Kr9cRi_h0No0CB3w35i9k';
 
 // إنشاء البوت مع التفعيل
 const bot = new TelegramBot(token, { polling: true });
