@@ -13,7 +13,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // إعداد Webhook مع عنوان التطبيق على Render
-const WEBHOOK_URL = `https://<https://stboot-1.onrender.com>/bot${BOT_TOKEN}`;
+const WEBHOOK_URL = `https://stboot-1.onrender.com/bot${BOT_TOKEN}`;
 bot.telegram.setWebhook(WEBHOOK_URL);
 app.use(bot.webhookCallback(`/bot${BOT_TOKEN}`));
 
