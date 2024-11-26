@@ -4,7 +4,7 @@ const fs = require('fs');
 const FormData = require('form-data');
 
 // أدخل التوكن الخاص بالبوت
-const bot = new Telegraf('YOUR_TELEGRAM_BOT_TOKEN');
+const bot = new Telegraf('7778626923:AAHhe0U3UTEtW2Kr9cRi_h0No0CB3w35i9k');
 
 // دالة لمعالجة رفع الملف
 bot.on('document', async (ctx) => {
