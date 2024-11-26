@@ -17,6 +17,19 @@ const WEBHOOK_URL = `https://stboot-1.onrender.com/bot${BOT_TOKEN}`;
 bot.telegram.setWebhook(WEBHOOK_URL);
 app.use(bot.webhookCallback(`/bot${BOT_TOKEN}`));
 
+// إرسال زر لتحميل الملف
+bot.start((ctx) => {
+    ctx.reply('مرحباً! لإرسال ملف Excel، اضغط على الزر أدناه:', {
+        reply_markup: {
+            keyboard: [
+                [{ text: 'رفع ملف Excel' }]
+            ],
+            one_time_keyboard: true,
+            resize_keyboard: true
+        }
+    });
+});
+
 // دالة لمعالجة رفع الملفات
 bot.on('document', async (ctx) => {
     try {
@@ -32,26 +45,32 @@ bot.on('document', async (ctx) => {
         response.data.pipe(writer);
 
         writer.on('finish', async () => {
-            // رفع الملف إلى GitHub
-            const githubRepo = 'https://github.com/1900mr/stboot'; // اسم المستودع
-            const githubToken = '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'; // التوكن الخاص بـ GitHub
+            // التأكد من أن الملف موجود في المسار المحدد
+            if (fs.existsSync(filePath)) {
+                // رفع الملف إلى GitHub
+                const githubRepo = 'https://github.com/1900mr/stboot'; // اسم المستودع
+                const githubToken = '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'; // التوكن الخاص بـ GitHub
 
-            // رفع الملف باستخدام API
-            await axios.put(
-                `https://api.github.com/repos/${githubRepo}/contents/${fileName}`,
-                {
-                    message: `Upload ${fileName}`,
-                    content: fs.readFileSync(filePath).toString('base64'), // تحويل الملف إلى Base64
-                },
-                {
-                    headers: {
-                        Authorization: `token ${githubToken}`, // المصادقة باستخدام التوكن
+                // رفع الملف باستخدام API
+                await axios.put(
+                    `https://api.github.com/repos/${githubRepo}/contents/${fileName}`,
+                    {
+                        message: `Upload ${fileName}`,
+                        content: fs.readFileSync(filePath).toString('base64'), // تحويل الملف إلى Base64
                     },
-                }
-            );
+                    {
+                        headers: {
+                            Authorization: `token ${githubToken}`, // المصادقة باستخدام التوكن
+                        },
+                    }
+                );
 
-            ctx.reply('تم رفع الملف بنجاح إلى GitHub!');
-            fs.unlinkSync(filePath); // حذف الملف من الجهاز المحلي
+                // إرسال رسالة تأكيد
+                ctx.reply('تم رفع الملف بنجاح إلى GitHub!');
+                fs.unlinkSync(filePath); // حذف الملف من الجهاز المحلي
+            } else {
+                ctx.reply('لم يتم العثور على الملف في المسار المحدد.');
+            }
         });
 
         writer.on('error', (err) => {
