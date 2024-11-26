@@ -1,7 +1,7 @@
 {
   "name": "telegram-github-bot",
   "version": "1.0.0",
-  "description": "A Telegram bot to upload Excel files to GitHub using Render.",
+  "description": "A Telegram bot for uploading files to GitHub using Webhooks.",
   "main": "bot.js",
   "scripts": {
     "start": "node index.js"
@@ -12,6 +12,6 @@
     "telegraf": "^4.12.2",
     "axios": "^1.5.0",
     "form-data": "^4.0.0",
-    "fs": "latest"
+    "express": "^4.18.2"
   }
 }
