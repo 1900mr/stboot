@@ -62,7 +62,7 @@ bot.on('document', async (ctx) => {
 
                 // رفع الملف إلى GitHub
                 const githubRepo = '1900mr/stboot'; // اسم المستودع
-                const githubToken = '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'; // التوكن الخاص بـ GitHub
+                const githubToken = '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'; // التوكن الخاص بـ GitHub
 
                 try {
                     const githubResponse = await axios.put(
